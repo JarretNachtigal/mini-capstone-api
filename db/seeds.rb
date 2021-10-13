@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Product.create(name: "q", price: 1, image_url: "img", description: "r")
-Product.create(name: "second test", price: 20, image_url: "img2", description: "second")
+# Product.create(name: "second test", price: 20, image_url: "img2", description: "second")
+# Product.create(name: "banana", price: 3, image_url: "img3", description: "a banana :)")

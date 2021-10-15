@@ -1,0 +1,26 @@
+POST http://localhost:3000/products.json
+Content-Type: application/json
+
+{
+  "name": "second test from request",
+  "price": 5,
+  "image_url": "img6",
+  "description": "test 2 from requests.http"
+}
+
+###
+
+DELETE http://localhost:3000/products/1.json
+Content-Type: application/json
+
+###
+
+PATCH http://localhost:3000/products/2.json
+Content-Type: application/json
+
+{
+  "name": "changed with http patch",
+  "price": 2,
+  "image_url": "img2",
+  "description": "test 2 from requests.http"
+}

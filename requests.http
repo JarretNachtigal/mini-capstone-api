@@ -2,15 +2,15 @@ POST http://localhost:3000/products.json
 Content-Type: application/json
 
 {
-  "name": "second test from request",
-  "price": 5,
+  "name": "test serializer",
+  "price": 10,
   "image_url": "img6",
-  "description": "test 2 from requests.http"
+  "description": "from requests.http"
 }
 
 ###
 
-DELETE http://localhost:3000/products/1.json
+DELETE http://localhost:3000/products/7.json
 
 
 ###

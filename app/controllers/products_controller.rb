@@ -11,8 +11,12 @@ class ProductsController < ApplicationController
       image_url: params["image_url"],
       description: params["description"]
     )
-    product.save
-    render json: product
+    #happy/sad paths, only works with new+save not create
+    if product.save
+      render json: product
+    else
+      render json: { errors: product.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -27,9 +31,13 @@ class ProductsController < ApplicationController
     product.price = params["price"]|| product.price
     product.image_url = params["image_url"]|| product.image_url
     product.description = params["description"]|| product.description
-
-    product.save
-    render json: product
+    product.inventory = params["inventory"] || product.inventory
+    
+    if product.save
+      render json: product
+    else
+      render json: { errors: product.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -37,16 +45,4 @@ class ProductsController < ApplicationController
     Product.destroy_by(id: product_id)
     render json: { message: "hakai"}
   end
-  # def display_first
-  #   products = Product.first
-  #   render json: products.as_json
-  # end
-  # def product_wildcard # product_wildcard/3
-  #   product = params["product_id"]
-  #   render json: Product.find(product)
-  # end
-  # def product_query # ?product_id=#
-  #   product = params["product_id"]
-  #   render json: Product.find(product)
-  # end
 end

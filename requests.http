@@ -2,10 +2,11 @@ POST http://localhost:3000/products.json
 Content-Type: application/json
 
 {
-  "name": "test serializer",
+  "name": "spoon",
   "price": 10,
-  "image_url": "img6",
-  "description": "from requests.http"
+  "image_url": "imgfork",
+  "description": "a spoon texttext",
+  "inventory": "1"
 }
 
 ###
@@ -15,12 +16,9 @@ DELETE http://localhost:3000/products/7.json
 
 ###
 
-PATCH http://localhost:3000/products/2.json
+PATCH http://localhost:3000/products/11.json
 Content-Type: application/json
 
 {
-  "name": "changed with http patch",
-  "price": 2,
-  "image_url": "img2",
-  "description": "test 2 from requests.http"
+  "image_url": "imgspoon"
 }

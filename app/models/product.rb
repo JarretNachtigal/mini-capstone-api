@@ -1,9 +1,11 @@
 class Product < ApplicationRecord
+  belongs_to :supplier # NEED TO HAVE A TABLE COLUMN NAMED supplier_id
+  has_many :images
+
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: true, numericality: { greater_than: 0 }
-  validates :image_url, presence: true
   validates :description, presence: true, length: { in: 10..500 }
-  # validates :inventory, presence: true
+
   def is_discounted?
     if price > 10
       return false
@@ -16,5 +18,8 @@ class Product < ApplicationRecord
   end
   def total
     return price + tax
+  end
+  def images
+    images = Image.where(product_id: id)
   end
 end

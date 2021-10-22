@@ -20,3 +20,30 @@ Content-Type: application/json
 {
   "phone_number": "9812873465"
 }
+
+### user create
+
+POST http://localhost:3000/users.json
+Content-Type: application/json
+
+{
+  "name": "Super Mr. Gamer Man",
+  "email": "BiggerGamer@example.com",
+  "password": "Password2",
+  "password_confirmation": "Password2"
+}
+
+### Sessions create (login)
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
+
+{
+  "email": "BiggerGamer@example.com",
+  "password": "Password2"
+}
+
+### logged in Photos create
+GET http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzUwMTQyNDR9.bt8qhKz4FxoEEg7chpvk8BWt4DSHG_-h-VgTH_h0rKo
+Content-Type: application/json
+

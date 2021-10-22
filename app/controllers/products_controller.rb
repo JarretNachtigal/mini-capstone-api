@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
   def index
+    # if current_user
     products = Product.all
     render json: products
+    # else
+    #   render json: {message: "not logged in"}
+    # end
   end
 
   def create

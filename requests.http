@@ -47,3 +47,16 @@ GET http://localhost:3000/products
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzUwMTQyNDR9.bt8qhKz4FxoEEg7chpvk8BWt4DSHG_-h-VgTH_h0rKo
 Content-Type: application/json
 
+###
+
+POST http://localhost:3000/orders.json
+Content-Type: application/json
+
+{
+  "user_id": "1",
+  "product_id": "2",
+  "quantity": "1",
+  "subtotal": "60",
+  "tax": "3",
+  "total":"63"
+}

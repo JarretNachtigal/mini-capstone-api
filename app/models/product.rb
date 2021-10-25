@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
-  belongs_to :supplier # NEED TO HAVE A TABLE COLUMN NAMED supplier_id
+  belongs_to :supplier
+  belongs_to :order # NEED TO HAVE A TABLE COLUMN NAMED supplier_id
   has_many :images
+  has_many :orders
 
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: true, numericality: { greater_than: 0 }

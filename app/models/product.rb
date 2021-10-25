@@ -15,11 +15,16 @@ class Product < ApplicationRecord
       return true
     end
   end
-  def tax
-    return (price * 0.09)
+  def subtotal(quantity=1)
+    return price * quantity
   end
-  def total
-    return price + tax
+  def tax(quantity=1)
+
+    return (subtotal(quantity) * 0.09)
+  end
+  def total(quantity=1)
+
+    return subtotal(quantity) + tax(quantity)
   end
   def images
     images = Image.where(product_id: id)

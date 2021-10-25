@@ -19,13 +19,21 @@ class OrdersController < ApplicationController
   end
 
   def show
-    
-    orders = Order.all
-    render json: orders.as_json
+    if current_user
+      orders = Order.all
+      render json: orders.as_json
+    else
+      render json: { message: "log in please" }
+    end
   end
 
   def index
-    order = Order.find(params["id"])
-    render json: order
+
+    if current_user
+      order = Order.find(params["id"])
+      render json: order
+    else
+      render json: { message: "log in please" }
+    end
   end
 end

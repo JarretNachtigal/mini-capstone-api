@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user
+
   def create
-    # user = current_user.id # 
     product = Product.find(params["product_id"])
     quantity = params["quantity"].to_i
     order = Order.new(
@@ -19,21 +20,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user
-      orders = Order.all
-      render json: orders.as_json
-    else
-      render json: { message: "log in please" }
-    end
+    order = Order.find(params["id"])
+    render json: order
   end
 
   def index
-
-    if current_user
-      order = Order.find(params["id"])
-      render json: order
-    else
-      render json: { message: "log in please" }
-    end
+    orders = Order.all
+    render json: orders
   end
 end

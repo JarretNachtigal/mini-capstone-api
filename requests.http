@@ -72,3 +72,9 @@ Content-Type: application/json
 GET http://localhost:3000/orders.json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzUyNjg4MTh9.ACYmoIubeyHoHKyNg_OJupbUcCpYsoJNo_hLwAJMJiQ
 Content-Type: application/json
+
+
+### products by category index
+
+GET http://localhost:3000/products.json?category=food
+Content-Type: application/json

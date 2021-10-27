@@ -15,7 +15,9 @@ class ProductsController < ApplicationController
     product = Product.new(
       name: params["name"],
       price: params["price"],
-      description: params["description"]
+      description: params["description"],
+      supplier_id: params["supplier_id"],
+      image_url: params["image_url"]
     )
     #happy/sad paths, only works with new+save not create
     if product.save
@@ -37,6 +39,7 @@ class ProductsController < ApplicationController
     product.price = params["price"]|| product.price
     product.description = params["description"]|| product.description
     product.inventory = params["inventory"] || product.inventory
+    product.image_url = params["image_url"] || product.image_url
     
     if product.save
       render json: product

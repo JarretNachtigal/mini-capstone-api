@@ -1,34 +1,11 @@
-POST http://localhost:3000/suppliers.json
-Content-Type: application/json
-
-{
-  "name": "someones company",
-  "email": "someone@gmail.com",
-  "phone_number": "54321678"
-}
-
-###
-
-DELETE http://localhost:3000/suppliers/3.json
-
-
-###
-
-PATCH http://localhost:3000/suppliers/4.json
-Content-Type: application/json
-
-{
-  "phone_number": "9812873465"
-}
-
-### user create
+# user create
 
 POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "Super Mr. Gamer Man",
-  "email": "BiggerGamer@example.com",
+  "name": "Super Gamer Man",
+  "email": "SuperGamer@man.com",
   "password": "Password2",
   "password_confirmation": "Password2"
 }
@@ -38,7 +15,7 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "BiggerGamer@example.com",
+  "email": "SuperGamer@man.com",
   "password": "Password2"
 }
 
@@ -47,34 +24,24 @@ POST http://localhost:3000/sessions.json
 Content-Type: application/json
 
 {
-  "email": "Gamer@example.com",
+  "email": "Gamer@man.com",
   "password": "Password"
 }
 
-### logged in Photos create
-GET http://localhost:3000/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzUwMTQyNDR9.bt8qhKz4FxoEEg7chpvk8BWt4DSHG_-h-VgTH_h0rKo
-Content-Type: application/json
-
-### create product unauthorized
-
-POST http://localhost:3000/products.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzUyNzY3MDV9.6EE01Fi6jAHoVLhoEWj4CDeFtrjBNw7xFxqoDNHTnE4
-Content-Type: application/json
-
-{
-  "product_id": "8",
-  "quantity": "2"
-}
-
-###
+### super gamer man order admin
 
 GET http://localhost:3000/orders.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzUyNjg4MTh9.ACYmoIubeyHoHKyNg_OJupbUcCpYsoJNo_hLwAJMJiQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzU1MzM0MDV9.msXq_m0N04MZW3Qv66cTcRlkJ7PWBbfKOCWdqCe1zZQ
+Content-Type: application/json
+
+### gamer man order
+
+GET http://localhost:3000/orders.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1MzM2MDd9.7FkZ6XLPxXvFUnj26qYoylwgdZo_YQgSGOfToxwuOG0
 Content-Type: application/json
 
 
-### products by category index
+### products by category - index
 
 GET http://localhost:3000/products.json?category=food
 Content-Type: application/json
@@ -82,25 +49,25 @@ Content-Type: application/json
 ### create a cart
 
 POST http://localhost:3000/carted_products.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1Mjc4OTN9.JZz6InDaU8wM99R-O9egpCBSKrkElbyNgZmYm_LU0-c
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1MzM2MDd9.7FkZ6XLPxXvFUnj26qYoylwgdZo_YQgSGOfToxwuOG0
 Content-Type: application/json
 
 {
-  "product_id": "4",
+  "product_id": "1",
   "quantity": "2"
 }
 
-### cart index
+### cart index non admin
 GET http://localhost:3000/carted_products.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1Mjc4OTN9.JZz6InDaU8wM99R-O9egpCBSKrkElbyNgZmYm_LU0-c
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1MzM2MDd9.7FkZ6XLPxXvFUnj26qYoylwgdZo_YQgSGOfToxwuOG0
 Content-Type: application/json
 
-### create order from cart
+### create order from cart non admin
 POST http://localhost:3000/orders.json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1Mjc4OTN9.JZz6InDaU8wM99R-O9egpCBSKrkElbyNgZmYm_LU0-c
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1MzM2MDd9.7FkZ6XLPxXvFUnj26qYoylwgdZo_YQgSGOfToxwuOG0
 Content-Type: application/json
 
-###
+### sets carted products status to "removed"
 
 DELETE http://localhost:3000/carted_products.json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1Mjc4OTN9.JZz6InDaU8wM99R-O9egpCBSKrkElbyNgZmYm_LU0-c

@@ -23,10 +23,11 @@ class CartedProductsController < ApplicationController
   end
 
   def destroy
-    cart = CartedProduct.where(user_id: current_user.id)
-    cart.each do |product|
-      product.status = "removed"
-      product.save
-    end
+    # cart = CartedProduct.where(user_id: current_user.id)
+    # cart.each do |product|
+    #   product.status = "removed"
+    #   product.save
+    # end
+    
   end
 end

@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     # products with current user id and status carted
     products = CartedProduct.where(user_id: current_user)
     products = products.where(status: "carted")
-    # quantity = params["quantity"].to_i
+
     order_total = 0
     order_subtotal = 0
     order_tax = 0
@@ -25,6 +25,11 @@ class OrdersController < ApplicationController
     )
     if order.save
       render json: order
+      products.each do |product|
+        product.order_id = order.id
+        product.status = "purchased"
+        product.save
+      end
     else
       render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
     end

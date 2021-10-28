@@ -78,3 +78,29 @@ Content-Type: application/json
 
 GET http://localhost:3000/products.json?category=food
 Content-Type: application/json
+
+### create a cart
+
+POST http://localhost:3000/carted_products.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1Mjc4OTN9.JZz6InDaU8wM99R-O9egpCBSKrkElbyNgZmYm_LU0-c
+Content-Type: application/json
+
+{
+  "product_id": "4",
+  "quantity": "2"
+}
+
+### cart index
+GET http://localhost:3000/carted_products.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1Mjc4OTN9.JZz6InDaU8wM99R-O9egpCBSKrkElbyNgZmYm_LU0-c
+Content-Type: application/json
+
+### create order from cart
+POST http://localhost:3000/orders.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1Mjc4OTN9.JZz6InDaU8wM99R-O9egpCBSKrkElbyNgZmYm_LU0-c
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:3000/carted_products.json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2MzU1Mjc4OTN9.JZz6InDaU8wM99R-O9egpCBSKrkElbyNgZmYm_LU0-c

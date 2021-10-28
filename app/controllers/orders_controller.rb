@@ -2,15 +2,26 @@ class OrdersController < ApplicationController
   before_action :authenticate_user
 
   def create
-    product = Product.find(params["product_id"])
-    quantity = params["quantity"].to_i
+    # products with current user id and status carted
+    products = CartedProduct.where(user_id: current_user)
+    products = products.where(status: "carted")
+    # quantity = params["quantity"].to_i
+    order_total = 0
+    order_subtotal = 0
+    order_tax = 0
+    order_quantity = 0
+    products.each do |product|
+      order_total += Product.find(product.product_id).total(product.quantity)
+      order_subtotal += Product.find(product.product_id).subtotal(product.quantity)
+      order_tax += Product.find(product.product_id).tax(product.quantity)
+      order_quantity += product.quantity
+    end
     order = Order.new(
       user_id: current_user.id,
-      product_id: params["product_id"],
-      quantity: params["quantity"],
-      subtotal: product.subtotal(quantity),
-      tax: product.tax(quantity),
-      total: product.total(quantity)
+      quantity: order_quantity,
+      subtotal: order_total,
+      tax: order_tax,
+      total: order_total
     )
     if order.save
       render json: order

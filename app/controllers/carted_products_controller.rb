@@ -23,11 +23,9 @@ class CartedProductsController < ApplicationController
   end
 
   def destroy
-    # cart = CartedProduct.where(user_id: current_user.id)
-    # cart.each do |product|
-    #   product.status = "removed"
-    #   product.save
-    # end
-    
+    carted_product = current_user.carted_products.find_by(id: params[:id], status: "carted")
+    carted_product.status = "removed"
+    carted_product.save
+    render json: {message: "Product removed from cart!"}
   end
 end
